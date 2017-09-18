@@ -64,7 +64,7 @@ public class usuario extends HttpServlet {
             //SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
             String nombre = request.getParameter("UNombre");
             String apellido = request.getParameter("UApellido");
-            //Date fechaNacimiento = formatter.parse(request.getParameter("UFechaNacimiento"));
+            Date fechaNacimiento = new Date(request.getParameter("UFechaNacimiento"));
             String telefono = request.getParameter("UTelefono");
             String genero = request.getParameter("UGenero");
             String correo = request.getParameter("UCorreo");
@@ -80,7 +80,7 @@ public class usuario extends HttpServlet {
                 String contraseniaEncriptada = DigestUtils.sha512Hex(contrasenia);
 
                 Session sesion = HibernateUtil.getSessionFactory().openSession();
-                Persona objPersona = new Persona(0, nombre, apellido, new Date(), telefono, genero, correo, contraseniaEncriptada, avatar);
+                Persona objPersona = new Persona(0, nombre, apellido, fechaNacimiento, telefono, genero, correo, contraseniaEncriptada, avatar);
                 sesion.beginTransaction();
                 sesion.save(objPersona);
                 sesion.getTransaction().commit();

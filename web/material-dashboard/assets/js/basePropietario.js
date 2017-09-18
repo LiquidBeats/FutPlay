@@ -144,11 +144,16 @@ $(document).ready(function(){
                     $("#campoFotoNombreUP").val(input.files[0].name);
                     $("#avatarPropietarioNombreUP").val(input.files[0].name);
                     $("#avatarJugadorNombre").val(input.files[0].name);
-                }
+                };
                 reader.readAsDataURL(input.files[0]);
             }
             else{
-                swal("Advertencia","El archivo seleccionado no es una imagen, solo puedes subir archivos con extension jpg, jpeg y png","warning");
+                swal({
+                   title:"Advertencia",
+                   text:"El archivo seleccionado no es una imagen, solo puedes subir archivos con extension jpg, jpeg y png",
+                   type:"warning",
+                   confirmButtonText:"Aceptar"
+                });
             }
         }
     }
@@ -311,7 +316,7 @@ $(document).ready(function(){
                                        if(data>"0"){
                                            swal({
                                                title:"Bienvenido!",
-                                               text:"Ahora haces parte de la comunidad futplay inicia sesion y disfruta",
+                                               text:"Ahora haces parte de la comunidad futplay inicia sesión y disfruta",
                                                type:"success",
                                                confirmButtonText:"Aceptar",
                                                showCancelButton:false,
@@ -329,7 +334,12 @@ $(document).ready(function(){
                        });
                    } 
                    else{
-                       swal("Advertencia","El correo electronico que ingresaste ya esta en uso","warning");
+                       swal({
+                           title:"Advertencia",
+                           text:"El correo electronico que ingresaste ya esta en uso",
+                           type:"warning",
+                           confirmButtonText:"Aceptar"
+                       });
                    }
                });
         }
@@ -626,7 +636,7 @@ $(document).ready(function(){
                 title:"Confirmar datos",
                 text:"¿Estas seguro de que todos tus datos son correctos?",
                 showLoaderOnConfirm:true,
-                confirmButtonText:"Aceptar",
+                confirmButtonText:"Sí",
                 cancelButtonText:"Cancelar",
                 type:"info",
                 showCancelButton:true,
@@ -726,7 +736,6 @@ $(document).ready(function(){
                 $.notify({
                     icon: "check",
                     message: "Cancha añadida exitosamente"
-
                 },{
                     type: 'success',
                     timer: 2500,
@@ -844,7 +853,12 @@ $(document).ready(function(){
                window.location.href = "/FutPlayFinal/material-dashboard/pages/campo/administrarCampo.jsp";
            }
            else{
-               swal("Información","No tienes campos registrados, empieza por añadir alguno","info");
+               swal({
+                  title:"Informacion",
+                  text:"No tienes campos registrados, empieza por añadir alguno",
+                  type:"info",
+                  confirmButtonText:"Aceptar"
+               });
            }
        });
     });
@@ -855,9 +869,14 @@ $(document).ready(function(){
             type:"post"
         }).done(function(rt){
             if(rt>"0"){ 
-                window.location.href = "/FutPlayFinal/material-dashboard/pages/cancha/administrarCanchas.jsp"
+                window.location.href = "/FutPlayFinal/material-dashboard/pages/cancha/administrarCanchas.jsp";
             }else{  
-                swal("Informacion","No tienes canchas registradas, empieza por añadir algunas","info");                             
+                swal({
+                   title:"Informacion",
+                   text:"No tienes canchas registradas, empieza por añadir algunas",
+                   type:"info",
+                   confirmButtonText:"Aceptar"
+                });                            
             }           
         });
     });
@@ -1005,6 +1024,7 @@ $(document).ready(function(){
                                     title:"Exito",
                                     text:"Perfil actualizado exitosamente",
                                     type:"success",
+                                    confirmButtonText:"Aceptar",
                                     preConfirm: function(){
                                         window.location.href = "/FutPlayFinal/material-dashboard/pages/propietario/verPerfilPropietario.jsp";
                                     }

@@ -74,8 +74,8 @@ public class propietario extends HttpServlet {
         try{
             Session s = HibernateUtil.getSessionFactory().openSession();
             int id = Integer.valueOf(request.getParameter("UId"));
-           // Date dt = new Date(request.getParameter("UFechaNacimiento"));
-            Persona per = new Persona(id, request.getParameter("UNombre"), request.getParameter("UApellido"), new Date(), request.getParameter("UTelefono"), request.getParameter("UGenero"), request.getParameter("UCorreo"), request.getParameter("UContrasenia"), request.getParameter("UAvatar"));
+            Date dt = new Date(request.getParameter("UFechaNacimiento"));
+            Persona per = new Persona(id, request.getParameter("UNombre"), request.getParameter("UApellido"), dt, request.getParameter("UTelefono"), request.getParameter("UGenero"), request.getParameter("UCorreo"), request.getParameter("UContrasenia"), request.getParameter("UAvatar"));
             Propietario prp = new Propietario(id, per);
             try{
                 s.beginTransaction();

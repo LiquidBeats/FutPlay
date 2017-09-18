@@ -6,9 +6,9 @@ window.fbAsyncInit = function() {
       version          : 'v2.10'
     });
     
-    FB.getLoginStatus(function(response) {
-        statusChangeCallback(response);
-    });
+    //FB.getLoginStatus(function(response) {
+      //  statusChangeCallback(response);
+    //});
       
   };
 

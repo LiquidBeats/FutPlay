@@ -6,7 +6,7 @@
     response.setHeader("Pragma","no-cache"); //HTTP 1.0 backward compatibility
     Propietario objPropietario = (Propietario)session.getAttribute("PropietarioIngresado");
     try{      
-        if(session.getAttribute("PropietarioIngresado").equals("")){
+        if(session.getAttribute("PropietarioIngresado").equals(null)){
             response.sendRedirect("/FutPlayFinal/index.html");
         }
         else{
@@ -43,9 +43,6 @@
                         </li>
                         <li id="editarperfil">
                             <a href="/FutPlayFinal/material-dashboard/pages/propietario/editarPerfilPropietario.jsp">Editar perfil</a>
-                        </li>
-                        <li>
-                            <a href="#">Ajustes</a>
                         </li>
                     </ul>
                 </div>

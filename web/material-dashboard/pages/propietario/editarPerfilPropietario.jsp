@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     response.setHeader("Cache-Control","no-cache"); //Forces caches to obtain a new copy of the page from the origin server
@@ -40,7 +42,11 @@
                                         <div class="col-sm-4 col-sm-offset-1">
                                             <div class="picture-container">
                                                 <div class="picture">
-                                                    <img src="/FutPlayFinal/material-dashboard/assets/img/avatares/<%=objPropietario.getPersona().getAvatar()%>" class="picture-src" id="wizardPicturePreview" title="">
+                                                    <%if(objPropietario.getPersona().getAvatar().length()>=100){%>
+                                                        <img class="img" src="<%=objPropietario.getPersona().getAvatar()%>">
+                                                    <%}else{%>
+                                                        <img class="img" src="/FutPlayFinal/material-dashboard/assets/img/avatares/<%=objPropietario.getPersona().getAvatar()%>">
+                                                    <%}%>
                                                     <input type="file" id="avatarPropietarioUP">
                                                     <input type="text" hidden id="avatarPropietarioNombreUP" value="<%=objPropietario.getPersona().getAvatar()%>">
                                                 </div>
@@ -79,7 +85,8 @@
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="label-control">Fecha nacimiento
                                                     </label>
-                                                    <input name="fechanacimientoPropietarioUP" id="fechanacimientoPropietarioUP" type="text" class="form-control datepicker" value="<%=objPropietario.getPersona().getFecha_Nacimiento()%>">
+                                                    <%SimpleDateFormat fechaN = new SimpleDateFormat("MM/dd/yyyy"); Date pene = objPropietario.getPersona().getFecha_Nacimiento();%>
+                                                    <input name="fechanacimientoPropietarioUP" id="fechanacimientoPropietarioUP" type="text" class="form-control datepicker" value="<%=fechaN.format(pene)%>">
                                                 <span class="material-input"></span></div>
 
                                                 <span class="input-group-addon">
@@ -108,11 +115,15 @@
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="label-control">Genero
                                                     </label>
-                                                    <select name="generoPropietarioUP" id="generoPropietarioUP" class="form-control">
-                                                        <option disabled="" selected=""></option>
-                                                        <option value="Masculino"> Masculino </option>
-                                                        <option value="Femenino"> Femenino </option>
-                                                    </select>
+                                                    <%if(objPropietario.getPersona().getGenero().equals("Masculino")){%>
+                                                        <select name="generoPropietarioUP" id="generoPropietarioUP" class="form-control">
+                                                            <option value="Masculino"> Masculino </option>
+                                                        </select>
+                                                    <%}else{%>
+                                                        <select name="generoPropietarioUP" id="generoPropietarioUP" class="form-control">
+                                                            <option value="Femenino"> Femenino </option>
+                                                        </select>
+                                                    <%}%>
                                                 <span class="material-input"></span></div>
                                             </div>
                                             <div class="form-group pull-right">
